@@ -12,12 +12,22 @@ export const Global = () => {
         body {
           margin: 0;
           padding: 0;
-          color: ${theme.colors.gray12};
-          background-color: ${theme.colors.gray2};
+            color: ${theme.colors.blue12};               // 텍스트 색상을 진한 파란색으로
+            background-color: ${theme.colors.blue2};     // 배경색을 연한 파란색으로
           font-family: ${pretendard.style.fontFamily};
           font-weight: ${pretendard.style.fontWeight};
           font-style: ${pretendard.style.fontStyle};
         }
+
+          /* 다크모드 스타일 */
+          [data-theme='dark'] body {
+              color: ${theme.colors.blue11};
+              background-color: ${theme.colors.blue4};  // 더 밝은 파란색으로 변경
+          }
+
+          [data-theme='dark'] hr {
+              border-top: 1px solid ${theme.colors.blue6};  // 구분선도 좀 더 밝게
+          }
 
         * {
           color-scheme: ${theme.scheme};
@@ -71,7 +81,7 @@ export const Global = () => {
           width: 100%;
           border: none;
           margin: 0;
-          border-top: 1px solid ${theme.colors.gray6};
+            border-top: 1px solid ${theme.colors.blue6};  // gray6에서 blue6로 변경
         }
       `}
     />
