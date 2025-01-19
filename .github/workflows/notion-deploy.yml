@@ -1,0 +1,32 @@
+name: Deploy on Notion Update
+
+on:
+  repository_dispatch:
+    types: [notion-update]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Check Notion Update
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            console.log('Notion update detected, triggering deployment')
+            
+      - name: Trigger Vercel Deployment
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          curl -X POST "https://api.vercel.com/v1/deployments" \
+          -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "name": "morethan-log",
+            "target": "production",
+            "projectId": "'$VERCEL_PROJECT_ID'"
+          }'
