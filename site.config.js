@@ -18,8 +18,8 @@ const CONFIG = {
   ],
   // blog setting (required)
   blog: {
-    title: "morethan-log",
-    description: "welcome to morethan-log!",
+    title: "고등어의 팔딱팔딱",
+    description: "고등어의 블로그 입니당 ~",
     scheme: "dark", // 'light' | 'dark' | 'system'
   },
 
