@@ -23,7 +23,7 @@ const CONFIG = {
     scheme: "dark", // 'light' | 'dark' | 'system'
   },
 
-  // CONFIG configration (required)
+  // CONFIG configration
   link: "https://morethan-log.vercel.app",
   since: 2022, // If leave this empty, current year will be used.
   lang: "en-US", // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES', 'ko-KR']
