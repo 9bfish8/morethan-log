@@ -1,10 +1,10 @@
 const CONFIG = {
   // profile setting (required)
   profile: {
-    name: "고등어",
+    name: "정가연",
     image: "/profile.png",
     role: "frontend developer",
-    bio: "ich bin Makrele.",
+    bio: "고등어 입니다 !~",
     email: "9bfish8@gmail.com",
     linkedin: "",
     github: "9bfish8",
