@@ -37,3 +37,9 @@ yarn-error.log*
 # public/sitemap.xml
 
 /.firebase
+
+# typescript
+*.tsbuildinfo
+
+# this project uses yarn; ignore npm's lockfile to avoid conflicts
+package-lock.json
