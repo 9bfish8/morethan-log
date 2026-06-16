@@ -21,9 +21,7 @@ const PostDetail: React.FC<Props> = () => {
       <article>
         {category && (
           <div css={{ marginBottom: "0.5rem" }}>
-            <Category readOnly={data.status?.[0] === "PublicOnDetail"}>
-              {category}
-            </Category>
+            <Category readOnly>{category}</Category>
           </div>
         )}
         {data.type[0] === "Post" && <PostHeader data={data} />}

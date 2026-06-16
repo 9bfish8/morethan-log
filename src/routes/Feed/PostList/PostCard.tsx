@@ -65,6 +65,8 @@ const StyledWrapper = styled(Link)`
   article {
     overflow: hidden;
     position: relative;
+    display: flex;
+    align-items: stretch;
     margin-bottom: 1.5rem;
     border-radius: 1rem;
     background-color: ${({ theme }) =>
@@ -90,15 +92,14 @@ const StyledWrapper = styled(Link)`
 
     > .thumbnail {
       position: relative;
-      width: 100%;
+      width: 35%;
+      max-width: 220px;
+      flex-shrink: 0;
       background-color: ${({ theme }) => theme.colors.blue2};
-      padding-bottom: 66%;
-
-      @media (min-width: 1024px) {
-        padding-bottom: 50%;
-      }
     }
     > .content {
+      flex: 1;
+      min-width: 0;
       padding: 1rem;
 
       &[data-thumb="false"] {

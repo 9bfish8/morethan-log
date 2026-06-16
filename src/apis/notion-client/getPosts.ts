@@ -10,18 +10,20 @@ import { TPosts } from "src/types"
  * @param {{ includePages: boolean }} - false: posts only / true: include pages
  */
 
+const unwrap = (entry: any) => entry?.value?.value ?? entry?.value
+
 // TODO: react query를 사용해서 처음 불러온 뒤로는 해당데이터만 사용하도록 수정
 export const getPosts = async () => {
   let id = CONFIG.notionConfig.pageId as string
-  const api = new NotionAPI()
+  const api = new NotionAPI({ authToken: process.env.NOTION_TOKEN })
 
   const response = await api.getPage(id)
   id = idToUuid(id)
-  const collection = Object.values(response.collection)[0]?.value
+  const collection = unwrap(Object.values(response.collection)[0])
   const block = response.block
   const schema = collection?.schema
 
-  const rawMetadata = block[id].value
+  const rawMetadata = unwrap(block[id])
 
   // Check Type
   if (
@@ -36,12 +38,9 @@ export const getPosts = async () => {
     for (let i = 0; i < pageIds.length; i++) {
       const id = pageIds[i]
       const properties = (await getPageProperties(id, block, schema)) || null
-      // Add fullwidth, createdtime to properties
-      properties.createdTime = new Date(
-        block[id].value?.created_time
-      ).toString()
-      properties.fullWidth =
-        (block[id].value?.format as any)?.page_full_width ?? false
+      const blockValue = unwrap(block[id])
+      properties.createdTime = new Date(blockValue?.created_time).toString()
+      properties.fullWidth = blockValue?.format?.page_full_width ?? false
 
       data.push(properties)
     }
